@@ -203,6 +203,11 @@ export default class ReactIdSwiper extends React.Component {
     delete this.swiper;
   }
 
+  forceRebuild() {
+    this.swiper.destroy(true, true);
+    this.swiper = Swiper(ReactDOM.findDOMNode(this), objectAssign({}, this.props));
+  }
+
   validateClass(className) {
     if (typeof className !== 'string') return '';
     return className.replace(/\.|#/g, ' ').trim();
